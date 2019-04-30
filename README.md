@@ -7,7 +7,7 @@ Here are links to the deployed application as well as the GraphQL playground
 
 [GraphQL API/Playground](https://reservations-api-qbolt.herokuapp.com/)
 
-This document serves as an overview of the project including explanations of technologies used  as well as general information on the structure/design of the project.
+This document serves as an overview of the project including the features, explanations of technologies, miscellaneous notes, and a future wishlist of challenges to tackle.
 
 ## Features
 * All base features listed in requirements
