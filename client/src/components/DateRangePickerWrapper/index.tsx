@@ -70,7 +70,7 @@ class DateRangePickerWrapper extends React.Component<IProps, IState> {
           startDate={this.props.startDate}
           endDate={this.props.endDate}
           startDateId={props.startDateId}
-          endDateId={props.startDateId}
+          endDateId={props.endDateId}
           startDatePlaceholderText={props.startDatePlaceholderText}
           endDatePlaceholderText={props.endDatePlaceholderText}
           required={props.required}

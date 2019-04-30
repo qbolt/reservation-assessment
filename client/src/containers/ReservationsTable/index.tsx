@@ -1,9 +1,10 @@
 import * as React from 'react'
 import Query from 'react-apollo/Query'
-import moment from 'moment'
+// import moment from 'moment'
 import { Link } from 'react-router-dom'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
+import moment from 'moment'
 
 import { RESERVATIONS } from '../../graphql/queries'
 import Input from '../../components/Input'
@@ -21,6 +22,10 @@ interface IFormState {
 
 interface IState {
   query: IFormState
+}
+
+const formatDate = (d: any) => {
+  return moment(d).format(dateFormat)
 }
 
 class ReservationsTable extends React.Component<any, IState> {
@@ -66,12 +71,10 @@ class ReservationsTable extends React.Component<any, IState> {
       accessor: 'hotelName'
     }, {
       Header: 'Check-in',
-      accessor: 'from',
-      Cell: (date: Date): string => moment(date).format(dateFormat)
+      accessor: 'from'
     }, {
       Header: 'Check-out',
-      accessor: 'to',
-      Cell: (date: Date): string => moment(date).format(dateFormat)
+      accessor: 'to'
     }]
 
     return (
@@ -89,10 +92,17 @@ class ReservationsTable extends React.Component<any, IState> {
           {({ loading, error, data }) => {
             if (error) return <p>Error</p>
             if (data) {
+              let reservations: any = []
+              if (data.reservations) {
+                reservations =
+                  data.reservations
+                    .map(({ to, from, ...rest }) =>
+                      ({ to: formatDate(to), from: formatDate(from), ...rest }))
+              }
               return (
                 <div>
                   <ReactTable
-                    data={data.reservations}
+                    data={reservations}
                     columns={columns}
                   />
                 </div>
