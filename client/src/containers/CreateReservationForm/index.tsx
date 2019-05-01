@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Mutation, Query } from 'react-apollo'
 
-import { CREATE_RESERVATION, HOTEL_NAMES_AND_BRAND, LOCATIONS } from '../../graphql/queries'
+import { CREATE_RESERVATION, HOTEL_NAMES_AND_BRAND, LOCATIONS, RESERVATIONS } from '../../graphql/queries'
 import DateRangePickerWrapper from '../../components/DateRangePickerWrapper'
 import Input from '../../components/Input'
 import Select from '../../components/Select'
@@ -97,7 +97,7 @@ class CreateReservationForm extends React.Component<any, IFormState> {
 
   render () {
     return (
-      <Mutation mutation={CREATE_RESERVATION}>
+      <Mutation mutation={CREATE_RESERVATION} refetchQueries={[ { query: RESERVATIONS }]} >
         {(createReservation: any, result: any) => (
           <div>
             <Link to='/'>Search Reservations</Link>
