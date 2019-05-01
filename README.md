@@ -3,7 +3,7 @@ Reservation Assessment
 ===============================
 Here are links to the deployed application as well as the GraphQL playground
 
-[Web App](https://reservations-client-qbolt.herokuapp.com/)
+[Web App](https://reservations-client-qbolt.herokuapp.com/) - Initial loading may be slow due to Heroku's free tier
 
 [GraphQL API/Playground](https://reservations-api-qbolt.herokuapp.com/)
 
