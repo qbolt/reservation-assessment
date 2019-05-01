@@ -5,7 +5,7 @@ Here are links to the deployed application as well as the GraphQL playground
 
 *Initial loading may be slow (and even timeout) due to Heroku's free tier. It spins down servers after no requests are made for a while.*
 
-[Web App](https://reservations-client-qbolt.herokuapp.com/) - 
+[Web App](https://reservations-client-qbolt.herokuapp.com/)
 
 [GraphQL API/Playground](https://reservations-api-qbolt.herokuapp.com/)
 
