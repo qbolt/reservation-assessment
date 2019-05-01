@@ -37,7 +37,7 @@ Below is a brief explanation of additional technologies that were utilized along
 * GraphQL API has support for getting reservations that are from *or* to a specific date as well as any that are within given *range*
 * There is a small seeding library that was used to generate dummy data and populate the database in `server/src/seed.ts`
 
-## A few things I would have like to tackle
+## A few things I would have liked to tackle
 
 * Enhance user experience - primarily navigation and the 'Create reservation' form
 * Implement pagination using GraphQL as opposed to fetching all reservations initially
