@@ -17,7 +17,7 @@ const LocationSelect = (props: Props) => {
     <Query<LocationData> query={LOCATIONS}>
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>
-        if (error) return <p>Error</p>
+        if (error) return <p>Error...</p>
         if (data) {
           return (
             <Select
@@ -27,12 +27,12 @@ const LocationSelect = (props: Props) => {
               name='location'
               id='location'
             >
-            {[
-              <option key='default' value='' disabled>Select one</option>,
-              ...data.locations.map(({ location }) => (
-                <option key={location} value={location}>{location}</option>
-              ))
-            ]}
+              {[
+                <option key='default' value='' disabled>Select one</option>,
+                ...data.locations.map(({ location }) => (
+                  <option key={location} value={location}>{location}</option>
+                ))
+              ]}
             </Select>
           )
         }
