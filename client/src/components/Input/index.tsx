@@ -4,11 +4,14 @@ import { Wrapper, StyledInput } from './styled'
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   onChange: (event: React.FormEvent<HTMLInputElement>) => void
   name: string
-  type: string
+  type?: string
   value?: string
 }
 
 class Input extends React.Component<IProps> {
+  static defaultProps = {
+    type: 'text'
+  }
   render () {
     return (
       <Wrapper>

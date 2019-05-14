@@ -14,7 +14,7 @@ const client = new ApolloClient({
 
 const rootNode = document.getElementById('root')
 
-const rootComponent = (
+export const rootComponent = (
   <BrowserRouter>
     <ApolloProvider client={client}>
       <Switch>
