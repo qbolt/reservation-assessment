@@ -7,7 +7,7 @@ import 'react-table/react-table.css'
 import moment from 'moment'
 
 import { RESERVATIONS } from '../../graphql/queries'
-import Search from '../../components/Search'
+import SearchForm from '../../components/SearchForm'
 
 const dateFormat = 'MM-DD-Y'
 
@@ -80,7 +80,7 @@ class ReservationsTable extends React.Component<any, IState> {
       <div>
         <Link to='create'>Create Reservation</Link>
         <h2>Search</h2>
-        <Search onChange={this.onInputChange} query={this.state.query}/>
+        <SearchForm onChange={this.onInputChange} query={this.state.query}/>
         <Query<ReservationData> query={RESERVATIONS} variables={this.getQuery()}>
           {({ loading, error, data }) => {
             if (error) return <p>Error</p>

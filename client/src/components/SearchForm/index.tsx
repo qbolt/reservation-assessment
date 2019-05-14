@@ -9,7 +9,7 @@ interface Props {
   onChange: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
-const Search = ({ query, onChange }: Props) => {
+const SearchForm = ({ query, onChange }: Props) => {
   return (
     <SearchWrapper>
       <Input placeholder='Reservation Id' name='_id' type='text' onChange={onChange} value={query._id}/>
@@ -21,4 +21,4 @@ const Search = ({ query, onChange }: Props) => {
   )
 }
 
-export default Search
+export default SearchForm
