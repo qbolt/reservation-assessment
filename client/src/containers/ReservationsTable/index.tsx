@@ -27,6 +27,23 @@ const formatDate = (d: any) => {
   return moment(d).format(dateFormat)
 }
 
+const columns = [{
+  Header: 'Reservation Id',
+  accessor: '_id'
+}, {
+  Header: 'Guest',
+  accessor: 'fullName'
+}, {
+  Header: 'Hotel',
+  accessor: 'hotelName'
+}, {
+  Header: 'Check-in',
+  accessor: 'from'
+}, {
+  Header: 'Check-out',
+  accessor: 'to'
+}]
+
 class ReservationsTable extends React.Component<any, IState> {
   constructor (props: any) {
     super(props)
@@ -59,23 +76,6 @@ class ReservationsTable extends React.Component<any, IState> {
   }
 
   render () {
-    const columns = [{
-      Header: 'Reservation Id',
-      accessor: '_id'
-    }, {
-      Header: 'Guest',
-      accessor: 'fullName'
-    }, {
-      Header: 'Hotel',
-      accessor: 'hotelName'
-    }, {
-      Header: 'Check-in',
-      accessor: 'from'
-    }, {
-      Header: 'Check-out',
-      accessor: 'to'
-    }]
-
     return (
       <div>
         <Link to='create'>Create Reservation</Link>
