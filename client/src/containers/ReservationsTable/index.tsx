@@ -7,8 +7,7 @@ import 'react-table/react-table.css'
 import moment from 'moment'
 
 import { RESERVATIONS } from '../../graphql/queries'
-import Input from '../../components/Input'
-import { SearchWrapper } from './styled'
+import Search from '../../components/Search'
 
 const dateFormat = 'MM-DD-Y'
 
@@ -81,13 +80,7 @@ class ReservationsTable extends React.Component<any, IState> {
       <div>
         <Link to='create'>Create Reservation</Link>
         <h2>Search</h2>
-        <SearchWrapper>
-          <Input placeholder='Reservation Id' name='_id' type='text' onChange={this.onInputChange} value={this.state.query._id}/>
-          <Input placeholder='Guest First Name' name='firstName' type='text' onChange={this.onInputChange} value={this.state.query.firstName}/>
-          <Input placeholder='Guest Last Name' name='lastName' type='text' onChange={this.onInputChange} value={this.state.query.lastName}/>
-          <Input placeholder='Brand' name='brand' type='text' onChange={this.onInputChange} value={this.state.query.brand}/>
-          <Input placeholder='Location' name='location' type='text' onChange={this.onInputChange} value={this.state.query.location}/>
-        </SearchWrapper>
+        <Search onChange={this.onInputChange} query={this.state.query}/>
         <Query<ReservationData> query={RESERVATIONS} variables={this.getQuery()}>
           {({ loading, error, data }) => {
             if (error) return <p>Error</p>

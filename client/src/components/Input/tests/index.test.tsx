@@ -1,15 +1,12 @@
 import * as React from 'react'
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import Input from '../index'
 
 const onChange = jest.fn()
 
 describe('<Input />', () => {
   it('renders without crashing', () => {
-    const input = mount(<Input name='test' onChange={onChange}/>)
-
-    expect(input).toBeDefined()
-    expect(input.find('input').length).toEqual(1)
+    shallow(<Input name='test' onChange={onChange}/>)
   })
 
   it('maps props correctly', () => {

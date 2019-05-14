@@ -6,10 +6,7 @@ const onClick = jest.fn()
 
 describe('<Button />', () => {
   it('renders without crashing', () => {
-    const button = shallow(<Button />)
-
-    // Interaction demo
-    expect(button).toBeDefined()
+    shallow(<Button />)
   })
 
   it('renders children', () => {
