@@ -113,8 +113,8 @@ class CreateReservationForm extends React.Component<any, IFormState> {
                 required
               />
               <SubmitButton type='submit'>Create Reservation</SubmitButton>
-              { result.error ? <span>Error creating reservation</span> : null }
-              { this.state.successCreating ? <span>Created reservation successfully</span> : null }
+              {result.error && <span>Error creating reservation</span>}
+              {this.state.successCreating && <span>Created reservation successfully</span>}
             </form>
           </div>
         )}
