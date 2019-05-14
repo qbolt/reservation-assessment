@@ -69,6 +69,7 @@ class ReservationsTable extends React.Component<any, IState> {
     this.setState({ query: { ...this.state.query, [name]: value } })
   }
 
+  // Map state to structure needed for graphql query
   getQuery (): any {
     return Object.entries(this.state.query)
       .filter(([_, val]) => val)
@@ -86,6 +87,8 @@ class ReservationsTable extends React.Component<any, IState> {
             if (error) return <p>Error</p>
             if (data) {
               let reservations: any = []
+
+              // Transforming into format ReactTable needs
               if (data.reservations) {
                 reservations =
                   data.reservations

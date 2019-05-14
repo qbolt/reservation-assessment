@@ -46,16 +46,19 @@ class CreateReservationForm extends React.Component<any, IFormState> {
 
   }
 
+  // Generic input handler relying on 'name' attribute on inputs
   onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { value, name } = event.target as HTMLInputElement
     this.setState({ form: { ...this.state.form, [name]: value } })
   }
 
+  // Specialized handler for location so that hotelName and brand can be reset
   onSelectLocation = (event: React.FormEvent<HTMLSelectElement>) => {
     const { value, name } = event.currentTarget
     this.setState({ form: { ...this.state.form, hotelName: '', brand: '', [name]: value } })
   }
 
+  // Specialized handler for hotelName because we need to get brand which is attached to DOM
   onSelectHotel = (event: React.FormEvent<HTMLSelectElement>) => {
     const element = event.target as HTMLSelectElement
     const brand = element[element.selectedIndex].getAttribute('data-brand')
@@ -99,7 +102,9 @@ class CreateReservationForm extends React.Component<any, IFormState> {
               <Input required placeholder={'First name'} name='firstName' type='text' value={this.state.form.firstName} onChange={this.onInputChange}/>
               <Input required placeholder={'Last name'} name='lastName' type='text' value={this.state.form.lastName} onChange={this.onInputChange}/>
               <LocationSelect onChange={this.onSelectLocation} location={this.state.form.location}/>
-              {this.state.form.location
+              {
+                // Only show HotelSelect if location is already selected
+                this.state.form.location
                 && <HotelSelect location={this.state.form.location} onChange={this.onSelectHotel} hotelName={this.state.form.hotelName}/>
               }
               <DateRangePickerWrapper
