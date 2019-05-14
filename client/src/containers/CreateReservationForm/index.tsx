@@ -47,7 +47,7 @@ class CreateReservationForm extends React.Component<any, IFormState> {
   }
 
   onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { value, name } = event.currentTarget as HTMLInputElement
+    const { value, name } = event.target as HTMLInputElement
     this.setState({ form: { ...this.state.form, [name]: value } })
   }
 

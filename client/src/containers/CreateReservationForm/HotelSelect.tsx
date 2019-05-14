@@ -21,7 +21,7 @@ const HotelSelect = (props: Props) => {
     >
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>
-        if (error) return <p>Error</p>
+        if (error) return <p>Error...</p>
         if (data) {
           if (data.hotels.length === 0) return <span>No hotels available based on your selection</span>
           if (data.hotels.length === 1) {
@@ -30,20 +30,20 @@ const HotelSelect = (props: Props) => {
             return <option selected disabled value={hotelName}>{hotelName}</option>
           }
           return (
-          <Select
-            name='hotelName'
-            id='hotelName'
-            onChange={props.onChange}
-            value={props.hotelName}
-            required
-          >
-        {[
-          <option key='default' value='' disabled>Select one</option>,
-          ...data.hotels.map(({ hotelName, brand }) => (
-            <option key={hotelName} data-brand={brand}>{hotelName}</option>
-          ))
-        ]}
-          </Select>
+            <Select
+              name='hotelName'
+              id='hotelName'
+              onChange={props.onChange}
+              value={props.hotelName}
+              required
+            >
+              {[
+                <option key='default' value='' disabled>Select one</option>,
+                ...data.hotels.map(({ hotelName, brand }) => (
+                  <option key={hotelName} data-brand={brand}>{hotelName}</option>
+                ))
+              ]}
+            </Select>
           )
         }
         return null
