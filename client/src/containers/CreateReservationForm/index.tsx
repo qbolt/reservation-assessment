@@ -44,26 +44,26 @@ class CreateReservationForm extends React.Component<any, IFormState> {
       successCreating: false
     }
 
-    this.onInputChange = this.onInputChange.bind(this)
-    this.onDatesChange = this.onDatesChange.bind(this)
-    this.onSelectHotel = this.onSelectHotel.bind(this)
-
   }
 
-  onInputChange (event: React.FormEvent<HTMLInputElement | HTMLSelectElement>) {
+  onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { value, name } = event.currentTarget as HTMLInputElement
     this.setState({ form: { ...this.state.form, [name]: value } })
   }
 
-  onSelectHotel (event: React.FormEvent<HTMLSelectElement>) {
+  onSelectLocation = (event: React.FormEvent<HTMLSelectElement>) => {
+    const { value, name } = event.currentTarget
+    this.setState({ form: { ...this.state.form, hotelName: '', brand: '', [name]: value } })
+  }
+
+  onSelectHotel = (event: React.FormEvent<HTMLSelectElement>) => {
     const element = event.target as HTMLSelectElement
     const brand = element[element.selectedIndex].getAttribute('data-brand')
     const { value, name } = element
     this.setState({ form: { ...this.state.form, brand: brand, [name]: value } })
   }
 
-  onDatesChange (dates: any) {
-    console.log('changed dates')
+  onDatesChange = (dates: any) => {
     const { startDate, endDate } = dates
     this.setState({ form: { ...this.state.form, from: startDate, to: endDate } })
   }
@@ -98,7 +98,7 @@ class CreateReservationForm extends React.Component<any, IFormState> {
             <form onSubmit={this.submit(createReservation)}>
               <Input required placeholder={'First name'} name='firstName' type='text' value={this.state.form.firstName} onChange={this.onInputChange}/>
               <Input required placeholder={'Last name'} name='lastName' type='text' value={this.state.form.lastName} onChange={this.onInputChange}/>
-              <LocationSelect onChange={this.onInputChange} location={this.state.form.location}/>
+              <LocationSelect onChange={this.onSelectLocation} location={this.state.form.location}/>
               {this.state.form.location
                 && <HotelSelect location={this.state.form.location} onChange={this.onSelectHotel} hotelName={this.state.form.hotelName}/>
               }

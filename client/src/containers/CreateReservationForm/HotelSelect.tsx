@@ -40,7 +40,7 @@ const HotelSelect = (props: Props) => {
         {[
           <option key='default' value='' disabled>Select one</option>,
           ...data.hotels.map(({ hotelName, brand }) => (
-            <option key={hotelName} value={hotelName} data-brand={brand}>{hotelName}</option>
+            <option key={hotelName} data-brand={brand}>{hotelName}</option>
           ))
         ]}
           </Select>
